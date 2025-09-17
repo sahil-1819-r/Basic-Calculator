@@ -1,0 +1,96 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+void option() // Operations
+{
+    printf("Calculator options are as follows:\n");
+    printf("1. Addition\n");
+    printf("2. Subtraction\n");
+    printf("3. Multiplication\n");
+    printf("4. Division\n");
+    printf("5. Power (x^y)\n");
+}
+
+int main()
+{
+    float answer;
+    float maxmium_number[50];
+    int i, n, opt;
+    option();
+
+    printf("How many numbers do you need for your work?: ");
+    scanf("%d", &n);
+
+    while(1) {
+        printf("Enter Numbers: "); // User Input
+        for(i = 0; i < n; i++)
+        {
+            scanf("%f", &maxmium_number[i]);
+        }
+
+        printf("Enter Option: ");
+        scanf("%d", &opt);
+
+        switch(opt)
+        {
+        case 1:  // For Addition
+            answer = 0;
+            for(i = 0; i < n; i++)
+            {
+                answer += maxmium_number[i];
+            }
+            printf("Sum is: %f\n", answer);
+            exit(0);
+
+        case 2:  // For Subtraction
+            answer = maxmium_number[0];
+            for(i = 1; i < n; i++)
+            {
+                answer -= maxmium_number[i];
+            }
+            printf("Difference is: %f\n", answer);
+            exit(0);
+
+        case 3: // For Multiplication
+            answer = 1;
+            for(i = 0; i < n; i++)
+            {
+                answer *= maxmium_number[i];
+            }
+            printf("Product is: %f\n", answer);
+            exit(0);
+
+        case 4: // Division
+            answer = maxmium_number[0];
+            for(i = 1; i < n; i++)
+            {
+                if(maxmium_number[i] == 0)
+                {
+                    printf("Division by zero is not allowed. Check divisor again!\n");
+                    exit(0);
+                }
+                answer /= maxmium_number[i];
+            }
+            printf("Result is: %f\n", answer);
+            exit(0);
+
+        case 5: // Power
+        {
+            float base, exponent;
+            printf("Enter base: ");
+            scanf("%f", &base);
+            printf("Enter exponent: ");
+            scanf("%f", &exponent);
+
+            answer = pow(base, exponent);
+            printf("%f ^ %f = %f\n", base, exponent, answer);
+            exit(0);
+        }
+
+        default:
+            printf("Invalid Option!! Please choose a valid operation.\n");
+        }
+    }
+    return 0;
+}
